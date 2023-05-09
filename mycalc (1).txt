@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Author: Reshail Sohail
+# Student Number: 041083531
+# Semester: Winter Semester
+# Course Code: CST 8102
+# Course Section: 322
+# Instructor's Name: Saif Terai
+# Date Created: April 09, 2023
+# Date Modified: April 09, 2023
+
+# Purpose: This script performs simple arithmetic operations.
+
+# Clear the screen
+clear
+
+# Define functions for addition and subtraction
+function add() {
+  echo $(($1 + $2))
+}
+
+function sub() {
+  echo $(($1 - $2))
+}
+
+# Check number of parameters
+if [ $# -eq 0 ]; then
+  # If no parameters are provided, prompt the user for input
+  read -p "Enter operand1: " operand1
+  read -p "Enter operator (+ or -): " operator
+  read -p "Enter operand2: " operand2
+else
+  # If parameters are provided, assign them to variables
+  operand1=$1
+  operator=$2
+  operand2=$3
+fi
+
+# Check the operator and perform the necessary arithmetic operation
+if [ "$operator" = "+" ]; then
+  result=$(add $operand1 $operand2)
+elif [ "$operator" = "-" ]; then
+  result=$(sub $operand1 $operand2)
+else
+  echo "Invalid operator: $operator"
+  exit 1
+fi
+
+# Display result
+echo "$operand1 $operator $operand2 = $result"
+
+
+

@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Filename: myscript.sh
+# Date: March 25, 2023
+# Author: Reshail Sohail
+# Student ID: 041083531
+# Term: Winter
+# Purpose: To manage user accounts and groups on a Linux system.
+
+clear
+while true
+do
+echo "Choose an option:"
+echo "A. Create user account"
+echo "B. Delete user account"
+echo "C. Add group as supplementary group for user"
+echo "D. Change initial group for user"
+echo "E. Change default shell for user"
+echo "F. Change user account expiration date"
+echo "Q. Quit"
+
+read -r choice
+
+if [[ "$choice" == "a" || "$choice" == "A" ]]; then
+echo "Enter username: "
+read -r username
+echo "Enter home directory: "
+read -r homedir
+echo "Enter default login shell: "
+read -r shell
+sudo useradd -m -d "$homedir" -s "$shell" "$username"
+elif [[ "$choice" == "b" || "$choice" == "B" ]]; then
+echo "Enter username: "
+read -r username
+sudo userdel -r "$username"
+elif [[ "$choice" == "c" || "$choice" == "C" ]]; then
+echo "Enter username: "
+read -r username/
+echo "Enter group name: "
+read -r groupname
+sudo usermod -a -G "$groupname" "$username"
+elif [[ "$choice" == "d" || "$choice" == "D" ]]; then
+echo "Enter username: "
+read -r username
+echo "Enter new initial group: "
+read -r groupname
+sudo usermod -g "$groupname" "$username"
+elif [[ "$choice" == "e" || "$choice" == "E" ]]; then
+echo "Enter username: "
+read -r username
+echo "Enter new shell: "
+read -r shell
+sudo usermod -s "$shell" "$username"
+elif [[ "$choice" == "f" || "$choice" == "F" ]]; then
+echo "Enter username: "
+read -r username
+echo "Enter new expiration date: "
+read -r expdate
+sudo chage -E "$expdate" "$username"
+elif [[ "$choice" == "q" || "$choice" == "Q" ]]; then
+echo "Exiting program."
+exit 0
+else
+echo "Invalid choice. Please select again."
+fi
+
+clear
+done
+
+End of script.
+
+

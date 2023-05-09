@@ -1,0 +1,51 @@
+#!/bin/bash
+
+
+# Filename: mygrade.sh
+# Date: March 16, 2023
+# Author: Reshail Sohail
+# Student ID: 041083531
+# Term: Winter
+
+
+# gets the grade values in numerical form
+echo "Script to change from Numerical to Letter Grade"
+echo "Enter Assignment Mark (0-40): "
+read Assignment
+echo "Enter mark for Test 1 (0-15): "
+read Test1
+echo "Enter mark for Test 2 (0-15): "
+read Test2
+echo "ENter mark for Final Exam (0-30): "
+read Exam
+((FinalMark= Assignment + Test1 + Test2 + exam))
+
+if [ $FinalMark -ge 90 ] && [ $FinalMark -le 100 ]
+	then Letter=A+
+elif [ $FinalMark -ge 85 ] && [ $FinalMark -le 89 ]
+	then Letter=A
+elif [ $FinalMark -ge 80 ] && [ $FinalMark -le 84 ]
+	then Letter=A-
+elif [ $FinalMark -ge 77 ] && [ $FinalMark -le 79 ]
+	then Letter=B+
+elif [ $FinalMark -ge 73 ] && [ $FinalMark -le 76 ]
+	then Letter=B
+elif [ $FinalMark -ge 70 ] && [ $FinalMark -le 72 ]
+	then Letter=B-
+elif [ $FinalMark -ge 67 ] && [ $FinalMark -le 69 ]
+	then Letter=C+
+elif [ $FinalMark -ge 63 ] && [ $FinalMark -le 66 ]
+	then Letter=C
+elif [ $FinalMark -ge 60 ] && [ $FinalMark -le 62 ]
+	then Letter=C-
+elif [ $FinalMark -ge 57 ] && [ $FinalMark -le 59 ]
+	then Letter=D+
+elif [ $FinalMark -ge 53 ] && [ $FinalMark -le 56 ]
+	then Letter=D
+elif [ $FinalMark -ge 50 ] && [ $FinalMark -le 52 ]
+	then Letter=D-
+elif [ $FinalMark -ge 0 ] && [ $FinalMark -le 49 ]
+	then Letter=F
+fi
+
+echo "Your final number grade is : " $FinalMark ", and final letter grade is:" $Letter
